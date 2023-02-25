@@ -1,0 +1,43 @@
+{
+    "name": "friendlee-digital-test",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "webpack --config webpack.config.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Ivan-dp/friendlee-digital-test.git"
+    },
+    "author": "ivan-dp@bk.ru",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Ivan-dp/friendlee-digital-test/issues"
+    },
+    "homepage": "https://github.com/Ivan-dp/friendlee-digital-test#readme",
+    "devDependencies": {
+        "@babel/cli": "^7.21.0",
+        "@babel/core": "^7.21.0",
+        "@babel/preset-env": "^7.20.2",
+        "autoprefixer": "^10.4.13",
+        "babel-loader": "^9.1.2",
+        "clean-webpack-plugin": "^4.0.0",
+        "css-loader": "^6.7.3",
+        "file-loader": "^6.2.0",
+        "html-webpack-plugin": "^5.5.0",
+        "node-sass": "^8.0.0",
+        "postcss-loader": "^7.0.2",
+        "postcss-preset-env": "^8.0.1",
+        "pug": "^2.0.4",
+        "pug-loader": "^2.4.0",
+        "sass-loader": "^13.2.0",
+        "style-loader": "^3.3.1",
+        "svg-sprite-loader": "^6.0.11",
+        "url-loader": "^4.1.1",
+        "webpack": "^5.75.0",
+        "webpack-cli": "^5.0.1",
+        "webpack-dev-server": "^4.11.1"
+    }
+}
