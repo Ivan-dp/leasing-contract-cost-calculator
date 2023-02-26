@@ -35,11 +35,10 @@ https://github.com/Ivan-dp/friendlee-digital-test
 │   ├── pages/                                    # Папка страниц проекта
 │   ├── pug/                                      # Папка с шаблонами и миксинами используемыми в проекте
 │   │   └── mixins/                               # Папка с миксинами проекта
-│   │       └── card.pug                          # Миксин
+│   │       └── button-mixin.pug                  # Миксин
 │   ├── scss/                                     # Папка с миксинами и миксами проекта
-│   │   ├── media-queries/                        # Папка с медиазапросами
 │   │   └── mixins/                               # Папка с миксинами проекта
-│   │       └── PFDinTextCondPro.scss             # Миксин
+│   │       └── Gilroy-Regular.scss               # Миксин
 ├── package.json                                  # Список модулей и прочей информации
 ├── postcss.config.js                             # Конфигурация postcss
 ├── webpack.config.js                             # Конфигурация Webpack.js
