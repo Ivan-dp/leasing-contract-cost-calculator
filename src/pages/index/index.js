@@ -19,30 +19,30 @@ $(function () {
         step: 100000,
         slide: function (event, ui) {
             $("#cost-of-car__value").val(spacesNumbers(ui.value.toString()));
-            $("#initial-payment").slider("option", "min", Number(ui.value * 0.1));
-            $("#initial-payment").slider("option", "max", Number(ui.value * 0.6));
-            $("#initial-payment").slider("option", "value", Number(ui.value * 0.13));
+            $("#initial-payment").draggable("option", "min", Number(ui.value * 0.1));
+            $("#initial-payment").draggable("option", "max", Number(ui.value * 0.6));
+            $("#initial-payment").draggable("option", "value", Number(ui.value * 0.13));
             $("#initial-payment__value").val(spacesNumbers((ui.value * 0.13).toString()) + " \u20bd");
-            $("#initial-payment__description").val(Math.floor(($("#initial-payment").slider("value") / $("#cost-of-car").slider("value")) * 100) + `%`);
+            $("#initial-payment__description").val(Math.floor(($("#initial-payment").draggable("value") / $("#cost-of-car").draggable("value")) * 100) + `%`);
             $("#lease-amount").val(
                 spacesNumbers(
                     (
-                        Number($("#lease-term").slider("value")) *
+                        Number($("#lease-term").draggable("value")) *
                             Number(
                                 Math.floor(
-                                    (Number($("#cost-of-car").slider("value")) - Number($("#initial-payment").slider("value"))) *
-                                        ((0.05 * Math.pow(1 + 0.05, Number(LEASE_TERM))) / (Math.pow(1 + 0.05, Number($("#lease-term").slider("value"))) - 1))
+                                    (Number($("#cost-of-car").draggable("value")) - Number($("#initial-payment").draggable("value"))) *
+                                        ((0.05 * Math.pow(1 + 0.05, Number(LEASE_TERM))) / (Math.pow(1 + 0.05, Number($("#lease-term").draggable("value"))) - 1))
                                 )
                             ) +
-                        Number($("#initial-payment").slider("value"))
+                        Number($("#initial-payment").draggable("value"))
                     ).toString()
                 ) + " \u20bd"
             );
             $("#monthly-payment").val(
                 spacesNumbers(
                     Math.floor(
-                        (Number($("#cost-of-car").slider("value")) - Number($("#initial-payment").slider("value"))) *
-                            ((0.05 * Math.pow(1 + 0.05, Number(LEASE_TERM))) / (Math.pow(1 + 0.05, Number($("#lease-term").slider("value"))) - 1))
+                        (Number($("#cost-of-car").draggable("value")) - Number($("#initial-payment").draggable("value"))) *
+                            ((0.05 * Math.pow(1 + 0.05, Number(LEASE_TERM))) / (Math.pow(1 + 0.05, Number($("#lease-term").draggable("value"))) - 1))
                     ).toString()
                 ) + " \u20bd"
             );
@@ -60,32 +60,32 @@ $(function () {
         animate: "slow",
         range: "min",
         value: function (event, ui) {
-            $("#initial-payment").slider("option", "value", Number(ui.min * 0.13));
+            $("#initial-payment").draggable("option", "value", Number(ui.min * 0.13));
         },
         step: 1000,
         slide: function (event, ui) {
             $("#initial-payment__value").val(spacesNumbers(ui.value.toString()) + " \u20bd");
-            $("#initial-payment__description").val(Math.floor((ui.value / $("#cost-of-car").slider("value")) * 100) + `%`);
-            $("#initial-payment__description").val(Math.floor(($("#initial-payment").slider("value") / $("#cost-of-car").slider("value")) * 100) + `%`);
+            $("#initial-payment__description").val(Math.floor((ui.value / $("#cost-of-car").draggable("value")) * 100) + `%`);
+            $("#initial-payment__description").val(Math.floor(($("#initial-payment").draggable("value") / $("#cost-of-car").draggable("value")) * 100) + `%`);
             $("#lease-amount").val(
                 spacesNumbers(
                     (
-                        Number($("#lease-term").slider("value")) *
+                        Number($("#lease-term").draggable("value")) *
                             Number(
                                 Math.floor(
-                                    (Number($("#cost-of-car").slider("value")) - Number($("#initial-payment").slider("value"))) *
-                                        ((0.05 * Math.pow(1 + 0.05, Number(LEASE_TERM))) / (Math.pow(1 + 0.05, Number($("#lease-term").slider("value"))) - 1))
+                                    (Number($("#cost-of-car").draggable("value")) - Number($("#initial-payment").draggable("value"))) *
+                                        ((0.05 * Math.pow(1 + 0.05, Number(LEASE_TERM))) / (Math.pow(1 + 0.05, Number($("#lease-term").draggable("value"))) - 1))
                                 )
                             ) +
-                        Number($("#initial-payment").slider("value"))
+                        Number($("#initial-payment").draggable("value"))
                     ).toString()
                 ) + " \u20bd"
             );
             $("#monthly-payment").val(
                 spacesNumbers(
                     Math.floor(
-                        (Number($("#cost-of-car").slider("value")) - Number($("#initial-payment").slider("value"))) *
-                            ((0.05 * Math.pow(1 + 0.05, Number(LEASE_TERM))) / (Math.pow(1 + 0.05, Number($("#lease-term").slider("value"))) - 1))
+                        (Number($("#cost-of-car").draggable("value")) - Number($("#initial-payment").draggable("value"))) *
+                            ((0.05 * Math.pow(1 + 0.05, Number(LEASE_TERM))) / (Math.pow(1 + 0.05, Number($("#lease-term").draggable("value"))) - 1))
                     ).toString()
                 ) + " \u20bd"
             );
@@ -111,22 +111,22 @@ $(function () {
             $("#lease-amount").val(
                 spacesNumbers(
                     (
-                        Number($("#lease-term").slider("value")) *
+                        Number($("#lease-term").draggable("value")) *
                             Number(
                                 Math.floor(
-                                    (Number($("#cost-of-car").slider("value")) - Number($("#initial-payment").slider("value"))) *
-                                        ((0.05 * Math.pow(1 + 0.05, Number(LEASE_TERM))) / (Math.pow(1 + 0.05, Number($("#lease-term").slider("value"))) - 1))
+                                    (Number($("#cost-of-car").draggable("value")) - Number($("#initial-payment").draggable("value"))) *
+                                        ((0.05 * Math.pow(1 + 0.05, Number(LEASE_TERM))) / (Math.pow(1 + 0.05, Number($("#lease-term").draggable("value"))) - 1))
                                 )
                             ) +
-                        Number($("#initial-payment").slider("value"))
+                        Number($("#initial-payment").draggable("value"))
                     ).toString()
                 ) + " \u20bd"
             );
             $("#monthly-payment").val(
                 spacesNumbers(
                     Math.floor(
-                        (Number($("#cost-of-car").slider("value")) - Number($("#initial-payment").slider("value"))) *
-                            ((0.05 * Math.pow(1 + 0.05, Number(LEASE_TERM))) / (Math.pow(1 + 0.05, Number($("#lease-term").slider("value"))) - 1))
+                        (Number($("#cost-of-car").draggable("value")) - Number($("#initial-payment").draggable("value"))) *
+                            ((0.05 * Math.pow(1 + 0.05, Number(LEASE_TERM))) / (Math.pow(1 + 0.05, Number($("#lease-term").draggable("value"))) - 1))
                     ).toString()
                 ) + " \u20bd"
             );
@@ -138,27 +138,27 @@ $(function () {
         },
     });
 
-    $("#cost-of-car__value").val($("#cost-of-car").slider("value"));
+    $("#cost-of-car__value").val($("#cost-of-car").draggable("value"));
     $("#cost-of-car__description").val(`\u20bd`);
-    $("#initial-payment__value").val(spacesNumbers(($("#cost-of-car").slider("value") * 0.13).toString()) + " \u20bd");
-    $("#initial-payment").slider("option", "min", Number($("#cost-of-car").slider("value") * 0.1));
-    $("#initial-payment").slider("option", "value", Number($("#cost-of-car").slider("value") * 0.13));
-    $("#initial-payment").slider("option", "max", Number($("#cost-of-car").slider("value") * 0.6));
-    $("#initial-payment__description").val(Math.floor(($("#initial-payment").slider("value") / $("#cost-of-car").slider("value")) * 100) + `%`);
-    $("#lease-term__value").val($("#lease-term").slider("value"));
+    $("#initial-payment__value").val(spacesNumbers(($("#cost-of-car").draggable("value") * 0.13).toString()) + " \u20bd");
+    $("#initial-payment").draggable("option", "min", Number($("#cost-of-car").draggable("value") * 0.1));
+    $("#initial-payment").draggable("option", "value", Number($("#cost-of-car").draggable("value") * 0.13));
+    $("#initial-payment").draggable("option", "max", Number($("#cost-of-car").draggable("value") * 0.6));
+    $("#initial-payment__description").val(Math.floor(($("#initial-payment").draggable("value") / $("#cost-of-car").draggable("value")) * 100) + `%`);
+    $("#lease-term__value").val($("#lease-term").draggable("value"));
     $("#lease-term__description").val("мес.");
 
     var LEASE_TERM = $("#lease-term__value").val();
     var MONTHLY_PAYMENT = Math.floor(
-        (Number($("#cost-of-car").slider("value")) - Number($("#initial-payment").slider("value"))) *
-            ((0.05 * Math.pow(1 + 0.05, Number(LEASE_TERM))) / (Math.pow(1 + 0.05, Number($("#lease-term").slider("value"))) - 1))
+        (Number($("#cost-of-car").draggable("value")) - Number($("#initial-payment").draggable("value"))) *
+            ((0.05 * Math.pow(1 + 0.05, Number(LEASE_TERM))) / (Math.pow(1 + 0.05, Number($("#lease-term").draggable("value"))) - 1))
     );
 
-    $("#lease-amount").val(spacesNumbers((Number($("#lease-term").slider("value")) * Number(MONTHLY_PAYMENT) + Number($("#initial-payment").slider("value"))).toString()) + " \u20bd");
+    $("#lease-amount").val(spacesNumbers((Number($("#lease-term").draggable("value")) * Number(MONTHLY_PAYMENT) + Number($("#initial-payment").draggable("value"))).toString()) + " \u20bd");
 
     var COST_CAR = $("#cost-of-car__value").val();
     var INITIAL_PAYMENT = $("#initial-payment__value").val();
-    var LEASE_AMOUNT__VALUE = Number($("#lease-term").slider("value")) * Number(MONTHLY_PAYMENT) + Number($("#initial-payment").slider("value"));
+    var LEASE_AMOUNT__VALUE = Number($("#lease-term").draggable("value")) * Number(MONTHLY_PAYMENT) + Number($("#initial-payment").draggable("value"));
 
     COST_CAR = spacesNumbers(COST_CAR.toString());
     INITIAL_PAYMENT = spacesNumbers(INITIAL_PAYMENT.toString());
