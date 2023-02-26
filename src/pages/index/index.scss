@@ -20,11 +20,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-x: hidden;
 }
 
 .main {
     height: fit-content;
-    width: 100%;
+    // width: 100%;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -34,16 +35,16 @@ body {
         @include Nekst-Black(54px, 90%);
     }
     &__row {
-        width: 100%;
+        width: 94%;
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
         align-items: center;
-        margin: 10px 20px;
+        margin: 10px 3%;
     }
     &__card {
-        width: 32%;
-        margin: 9px;
+        width: 31%;
+        margin: 1%;
         h3 {
             @include Gilroy-Regular(16px, 20px);
             color: $secondary-text-color;
@@ -56,8 +57,8 @@ body {
         height: 120px;
         &_small {
             height: 82px !important;
-            width: 32%;
-            margin: 9px;
+            width: 31%;
+            margin: 1%;
             h3 {
                 @include Gilroy-Regular(16px, 20px);
                 color: $secondary-text-color;
@@ -163,4 +164,68 @@ body {
     color: $main-text-color;
     text-align: left;
     @include Nekst-Black(54px, 90%);
+}
+
+@media only screen and (max-width: 1119px) {
+    .main__title {
+        width: 100%;
+    }
+    .main__card {
+        width: 100%;
+        margin-top: 39px;
+    }
+    .main__card_small {
+        margin-top: 30px;
+        width: 48%;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .main__row {
+        margin: 0 3%;
+    }
+    .main__title {
+        width: 100%;
+        @include Nekst-Black(34px !important, 31px !important);
+    }
+    .main__slider__value,
+    .ui-slider-description {
+        @include Nekst-Black(22px !important, 20px !important);
+    }
+    .main__card {
+        margin-top: 25px;
+        height: 96px;
+    }
+    .main__card_small {
+        height: 41px !important;
+        margin-top: 25px !important;
+        width: 98%;
+        input {
+            @include Nekst-Black(22px !important, 20px !important);
+        }
+    }
+    .main__slider {
+        width: calc(100% - 48px) !important;
+        position: absolute;
+        bottom: 0;
+        left: 24px;
+        height: 2px !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        border: none !important;
+        outline: none !important;
+        background: #e1e1e1 !important;
+        cursor: pointer !important;
+    }
+    .slider__wrapper {
+        height: 60px;
+    }
+    .request-button {
+        height: 60px;
+        @include Nekst-Black(22px, 20px);
+    }
+    #initial-payment__description {
+        height: 46px !important;
+        width: 50px;
+    }
 }
