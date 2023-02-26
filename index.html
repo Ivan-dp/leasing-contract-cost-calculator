@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>Тестовая вёрстка 4</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <link rel="icon" href="dist/assets/favicon.png"><script defer src="dist/index.cc8098d133d39afb0639bundle.js"></script></head>
+  <body>
+    <main class="main"> 
+      <div class="main__row">
+        <h1 class="main__title">Рассчитайте стоимость автомобиля в лизинг</h1>
+      </div>
+      <div class="main__row">
+            <div class="main__card">
+              <h3>Стоимость автомобиля</h3>
+                  <div class="slider__wrapper">
+                    <div class="input__wrapper">
+                      <input class="ui-slider-value main__slider__value" type="text" readonly="true" id="cost-of-car__value">
+                      <input class="ui-slider-description" type="text" readonly="true" id="cost-of-car__description">
+                    </div>
+                    <div class="main__slider" id="cost-of-car"></div>
+                  </div>
+            </div>
+            <div class="main__card">
+              <h3>Первоначальный взнос</h3>
+                  <div class="slider__wrapper">
+                    <div class="input__wrapper">
+                      <input class="ui-slider-value main__slider__value" type="text" readonly="true" id="initial-payment__value">
+                      <input class="ui-slider-description" type="text" readonly="true" id="initial-payment__description">
+                    </div>
+                    <div class="main__slider" id="initial-payment"></div>
+                  </div>
+            </div>
+            <div class="main__card">
+              <h3>Срок лизинга</h3>
+                  <div class="slider__wrapper">
+                    <div class="input__wrapper">
+                      <input class="ui-slider-value main__slider__value" type="text" readonly="true" id="lease-term__value">
+                      <input class="ui-slider-description" type="text" readonly="true" id="lease-term__description">
+                    </div>
+                    <div class="main__slider" id="lease-term"></div>
+                  </div>
+            </div>
+      </div>
+      <div class="main__row">
+            <div class="main__card_small">
+              <h3>Сумма договора лизинга</h3>
+              <input type="text" readonly="true" id="lease-amount">
+            </div>
+            <div class="main__card_small">
+              <h3>Ежемесячный платеж от</h3>
+              <input type="text" readonly="true" id="monthly-payment">
+            </div>
+            <div class="main__card_small">
+              <h3></h3>
+                  <button class="request-button" id="request-button">Оставить заявку</button>
+            </div>
+      </div>
+    </main>
+  </body>
+</html>
