@@ -1,11 +1,15 @@
 extends ../../pug/head.pug 
-block head
-    link(rel="icon", href="/src/img/home_fav.png", type="image/png")
+block append head
+    link(rel="stylesheet", href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css")
     script(src="https://code.jquery.com/jquery-3.6.0.js")
     script(src="https://code.jquery.com/ui/1.13.2/jquery-ui.js")
 block body 
     block mixins
         include ../../pug/mixins/button-mixin.pug
+        include ../../pug/mixins/slider-mixin.pug
     main.main 
         h1.main__title Рассчитайте стоимость автомобиля в лизинг
-    include ../../blocks/button/button.pug
+        +slider-mixin("main__slider", "cost-of-car", "main__slider__value", "cost-of-car__value", "", "cost-of-car__description")
+        +slider-mixin("main__slider", "initial-payment", "main__slider__value", "initial-payment__value", "", "initial-payment__description")
+        +slider-mixin("main__slider", "lease-term", "main__slider__value", "lease-term__value", "", "lease-term__description")
+        include ../../blocks/button/button.pug

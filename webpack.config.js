@@ -7,7 +7,7 @@ const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 module.exports = {
     mode: "development",
     stats: {
-        children: true,
+        children: false,
     },
     devServer: {
         historyApiFallback: true,
