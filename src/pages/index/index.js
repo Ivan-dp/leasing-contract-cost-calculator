@@ -170,3 +170,22 @@ $(function () {
     $("#cost-of-car__value").val(COST_CAR);
     $("#initial-payment__value").val(INITIAL_PAYMENT);
 });
+
+$(function () {
+    $("#request-button").click(function () {
+        var COST_CAR = $("#cost-of-car__value").val();
+        var INITIAL_PAYMENT = $("#initial-payment__value").val();
+        var LEASE_TERM = $("#lease-term__value").val();
+        var LEASE_AMOUNT = $("#lease-amount").val();
+        var MONTHLY_PAYMENT = $("#monthly-payment").val();
+        var REQUEST_OBJECT = {
+            "Cost of the car": COST_CAR + " \u20bd",
+            "Initial payment": INITIAL_PAYMENT,
+            "Lease term": LEASE_TERM + " m.",
+            "Lease amount": LEASE_AMOUNT,
+            "Monthly payment": MONTHLY_PAYMENT,
+        };
+        $("#request-button").attr("disabled", "true");
+        alert(JSON.stringify(REQUEST_OBJECT, null, 2));
+    });
+});
