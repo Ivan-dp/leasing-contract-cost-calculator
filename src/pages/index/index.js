@@ -10,7 +10,7 @@ $(function () {
 
     // Стоимость автомобиля
 
-    $("#cost-of-car").slider({
+    $("#cost-of-car").draggable({
         animate: "slow",
         range: "min",
         value: 3300000,
@@ -56,7 +56,7 @@ $(function () {
 
     // Первоначальный взнос
 
-    $("#initial-payment").slider({
+    $("#initial-payment").draggable({
         animate: "slow",
         range: "min",
         value: function (event, ui) {
@@ -99,7 +99,7 @@ $(function () {
 
     // Срок лизинга
 
-    $("#lease-term").slider({
+    $("#lease-term").draggable({
         animate: "slow",
         range: "min",
         value: 60,
