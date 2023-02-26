@@ -23,14 +23,14 @@ body {
 }
 
 .main {
-    height: 70vh;
+    height: fit-content;
     width: 100%;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     &__title {
         width: 50%;
-        margin: 9px;
+        margin: 0 9px;
         @include Nekst-Black(54px, 90%);
     }
     &__row {
@@ -39,7 +39,7 @@ body {
         justify-content: space-between;
         flex-wrap: wrap;
         align-items: center;
-        margin: 25px 20px;
+        margin: 10px 20px;
     }
     &__card {
         width: 32%;
@@ -54,6 +54,20 @@ body {
         align-items: baseline;
         flex-direction: column;
         height: 120px;
+        &_small {
+            height: 82px !important;
+            width: 32%;
+            margin: 9px;
+            h3 {
+                @include Gilroy-Regular(16px, 20px);
+                color: $secondary-text-color;
+                margin: 0;
+            }
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-direction: column;
+        }
     }
 }
 
@@ -146,7 +160,7 @@ body {
     background: transparent;
     border: none;
     outline: none;
-    color: $secondary-text-color;
+    color: $main-text-color;
     text-align: left;
     @include Nekst-Black(54px, 90%);
 }

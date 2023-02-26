@@ -19,9 +19,9 @@ block body
             +card-mixin("main__card", "Срок лизинга")
                 +slider-mixin("main__slider", "lease-term", "main__slider__value", "lease-term__value", "", "lease-term__description")
         .main__row
-            +card-mixin("main__card", "Сумма договора лизинга")
+            +card-mixin("main__card_small", "Сумма договора лизинга")
                 input(type="text", readonly="true", id="lease-amount")
-            +card-mixin("main__card", "Ежемесячный платеж от")
+            +card-mixin("main__card_small", "Ежемесячный платеж от")
                 input(type="text", readonly="true", id="monthly-payment")
-            +card-mixin("main__card", "")
+            +card-mixin("main__card_small", "")
                 include ../../blocks/button/button.pug
