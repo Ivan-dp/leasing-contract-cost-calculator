@@ -3,6 +3,11 @@ import "../../blocks/button/button.js";
 console.log("IT WORKS!!!");
 
 $(function () {
+    function spacesNumbers(str) {
+        var m = str.match(/^(.*?)((?:[,.]\d+)?|)$/);
+        return m[1].replace(/\B(?=(?:\d{3})*$)/g, " ") + m[2];
+    }
+
     // Стоимость автомобиля
 
     $("#cost-of-car").slider({
@@ -13,22 +18,41 @@ $(function () {
         max: 10000000,
         step: 100000,
         slide: function (event, ui) {
-            $("#cost-of-car__value").val(ui.value);
+            $("#cost-of-car__value").val(spacesNumbers(ui.value.toString()));
+            $("#initial-payment").slider("option", "min", Number(ui.value * 0.1));
+            $("#initial-payment").slider("option", "max", Number(ui.value * 0.6));
+            $("#initial-payment").slider("option", "value", Number(ui.value * 0.13));
+            $("#initial-payment__value").val(spacesNumbers((ui.value * 0.13).toString()) + " \u20bd");
+            $("#initial-payment__description").val(Math.floor(($("#initial-payment").slider("value") / $("#cost-of-car").slider("value")) * 100) + `%`);
+            $("#lease-amount").val(
+                spacesNumbers(
+                    (
+                        Number($("#lease-term").slider("value")) *
+                            Number(
+                                Math.floor(
+                                    (Number($("#cost-of-car").slider("value")) - Number($("#initial-payment").slider("value"))) *
+                                        ((0.05 * Math.pow(1 + 0.05, Number(LEASE_TERM))) / (Math.pow(1 + 0.05, Number($("#lease-term").slider("value"))) - 1))
+                                )
+                            ) +
+                        Number($("#initial-payment").slider("value"))
+                    ).toString()
+                ) + " \u20bd"
+            );
+            $("#monthly-payment").val(
+                spacesNumbers(
+                    Math.floor(
+                        (Number($("#cost-of-car").slider("value")) - Number($("#initial-payment").slider("value"))) *
+                            ((0.05 * Math.pow(1 + 0.05, Number(LEASE_TERM))) / (Math.pow(1 + 0.05, Number($("#lease-term").slider("value"))) - 1))
+                    ).toString()
+                ) + " \u20bd"
+            );
         },
         classes: {
             "ui-slider-handle": "custom-handle",
             "ui-slider-range": "custom-range",
             main__slider: "custom-slider",
         },
-        change: function (event, ui) {
-            $("#initial-payment").slider("option", "min", Number(ui.value * 0.1));
-            $("#initial-payment").slider("option", "max", Number(ui.value * 0.6));
-            $("#initial-payment").slider("option", "value", Number(ui.value * 0.13));
-            $("#initial-payment__value").val(ui.value * 0.13);
-        },
     });
-    $("#cost-of-car__value").val($("#cost-of-car").slider("value"));
-    $("#cost-of-car__description").val(`\u20bd`);
 
     // Первоначальный взнос
 
@@ -40,8 +64,31 @@ $(function () {
         },
         step: 1000,
         slide: function (event, ui) {
-            $("#initial-payment__value").val(ui.value);
+            $("#initial-payment__value").val(spacesNumbers(ui.value.toString()) + " \u20bd");
             $("#initial-payment__description").val(Math.floor((ui.value / $("#cost-of-car").slider("value")) * 100) + `%`);
+            $("#initial-payment__description").val(Math.floor(($("#initial-payment").slider("value") / $("#cost-of-car").slider("value")) * 100) + `%`);
+            $("#lease-amount").val(
+                spacesNumbers(
+                    (
+                        Number($("#lease-term").slider("value")) *
+                            Number(
+                                Math.floor(
+                                    (Number($("#cost-of-car").slider("value")) - Number($("#initial-payment").slider("value"))) *
+                                        ((0.05 * Math.pow(1 + 0.05, Number(LEASE_TERM))) / (Math.pow(1 + 0.05, Number($("#lease-term").slider("value"))) - 1))
+                                )
+                            ) +
+                        Number($("#initial-payment").slider("value"))
+                    ).toString()
+                ) + " \u20bd"
+            );
+            $("#monthly-payment").val(
+                spacesNumbers(
+                    Math.floor(
+                        (Number($("#cost-of-car").slider("value")) - Number($("#initial-payment").slider("value"))) *
+                            ((0.05 * Math.pow(1 + 0.05, Number(LEASE_TERM))) / (Math.pow(1 + 0.05, Number($("#lease-term").slider("value"))) - 1))
+                    ).toString()
+                ) + " \u20bd"
+            );
         },
         classes: {
             "ui-slider-handle": "custom-handle",
@@ -49,11 +96,6 @@ $(function () {
             main__slider: "custom-slider",
         },
     });
-    $("#initial-payment__value").val($("#cost-of-car").slider("value") * 0.13);
-    $("#initial-payment").slider("option", "min", Number($("#cost-of-car").slider("value") * 0.1));
-    $("#initial-payment").slider("option", "value", Number($("#cost-of-car").slider("value") * 0.13));
-    $("#initial-payment").slider("option", "max", Number($("#cost-of-car").slider("value") * 0.6));
-    $("#initial-payment__description").val(Math.floor(($("#initial-payment").slider("value") / $("#cost-of-car").slider("value")) * 100) + `%`);
 
     // Срок лизинга
 
@@ -66,6 +108,28 @@ $(function () {
         step: 1,
         slide: function (event, ui) {
             $("#lease-term__value").val(ui.value);
+            $("#lease-amount").val(
+                spacesNumbers(
+                    (
+                        Number($("#lease-term").slider("value")) *
+                            Number(
+                                Math.floor(
+                                    (Number($("#cost-of-car").slider("value")) - Number($("#initial-payment").slider("value"))) *
+                                        ((0.05 * Math.pow(1 + 0.05, Number(LEASE_TERM))) / (Math.pow(1 + 0.05, Number($("#lease-term").slider("value"))) - 1))
+                                )
+                            ) +
+                        Number($("#initial-payment").slider("value"))
+                    ).toString()
+                ) + " \u20bd"
+            );
+            $("#monthly-payment").val(
+                spacesNumbers(
+                    Math.floor(
+                        (Number($("#cost-of-car").slider("value")) - Number($("#initial-payment").slider("value"))) *
+                            ((0.05 * Math.pow(1 + 0.05, Number(LEASE_TERM))) / (Math.pow(1 + 0.05, Number($("#lease-term").slider("value"))) - 1))
+                    ).toString()
+                ) + " \u20bd"
+            );
         },
         classes: {
             "ui-slider-handle": "custom-handle",
@@ -73,6 +137,36 @@ $(function () {
             main__slider: "custom-slider",
         },
     });
+
+    $("#cost-of-car__value").val($("#cost-of-car").slider("value"));
+    $("#cost-of-car__description").val(`\u20bd`);
+    $("#initial-payment__value").val(spacesNumbers(($("#cost-of-car").slider("value") * 0.13).toString()) + " \u20bd");
+    $("#initial-payment").slider("option", "min", Number($("#cost-of-car").slider("value") * 0.1));
+    $("#initial-payment").slider("option", "value", Number($("#cost-of-car").slider("value") * 0.13));
+    $("#initial-payment").slider("option", "max", Number($("#cost-of-car").slider("value") * 0.6));
+    $("#initial-payment__description").val(Math.floor(($("#initial-payment").slider("value") / $("#cost-of-car").slider("value")) * 100) + `%`);
     $("#lease-term__value").val($("#lease-term").slider("value"));
     $("#lease-term__description").val("мес.");
+
+    var LEASE_TERM = $("#lease-term__value").val();
+    var MONTHLY_PAYMENT = Math.floor(
+        (Number($("#cost-of-car").slider("value")) - Number($("#initial-payment").slider("value"))) *
+            ((0.05 * Math.pow(1 + 0.05, Number(LEASE_TERM))) / (Math.pow(1 + 0.05, Number($("#lease-term").slider("value"))) - 1))
+    );
+
+    $("#lease-amount").val(spacesNumbers((Number($("#lease-term").slider("value")) * Number(MONTHLY_PAYMENT) + Number($("#initial-payment").slider("value"))).toString()) + " \u20bd");
+
+    var COST_CAR = $("#cost-of-car__value").val();
+    var INITIAL_PAYMENT = $("#initial-payment__value").val();
+    var LEASE_AMOUNT__VALUE = Number($("#lease-term").slider("value")) * Number(MONTHLY_PAYMENT) + Number($("#initial-payment").slider("value"));
+
+    COST_CAR = spacesNumbers(COST_CAR.toString());
+    INITIAL_PAYMENT = spacesNumbers(INITIAL_PAYMENT.toString());
+    LEASE_AMOUNT__VALUE = spacesNumbers(LEASE_AMOUNT__VALUE.toString());
+    MONTHLY_PAYMENT = spacesNumbers(MONTHLY_PAYMENT.toString());
+
+    $("#monthly-payment").val(MONTHLY_PAYMENT + " \u20bd");
+    $("#lease-amount").val(LEASE_AMOUNT__VALUE + " \u20bd");
+    $("#cost-of-car__value").val(COST_CAR);
+    $("#initial-payment__value").val(INITIAL_PAYMENT);
 });

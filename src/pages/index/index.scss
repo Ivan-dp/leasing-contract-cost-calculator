@@ -17,7 +17,6 @@
 
 body {
     height: 100vh;
-    // width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,11 +26,11 @@ body {
     height: 70vh;
     width: 100%;
     display: flex;
-    // justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     &__title {
         width: 50%;
+        margin: 9px;
         @include Nekst-Black(54px, 90%);
     }
     &__row {
@@ -91,7 +90,6 @@ body {
 }
 
 .slider__wrapper {
-    // margin: 0 10px;
     position: relative;
     display: flex;
     justify-content: center;
@@ -99,7 +97,6 @@ body {
     align-items: baseline;
     width: 100%;
     height: 68px;
-    // padding: 0 7px;
     background: #f3f3f4;
     border-radius: 16px;
 }
@@ -142,4 +139,14 @@ body {
     height: 54px;
     background: #ebebec;
     border-radius: 16px;
+}
+
+#lease-amount,
+#monthly-payment {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: $secondary-text-color;
+    text-align: left;
+    @include Nekst-Black(54px, 90%);
 }
