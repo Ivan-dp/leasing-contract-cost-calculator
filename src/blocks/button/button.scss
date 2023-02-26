@@ -1,0 +1,21 @@
+.request-button {
+    background-color: $primary-color;
+    width: fit-content;
+    height: 60px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    color: #ffffff;
+    @include Nekst-Black(30px, 36px);
+    &:hover {
+        background: #111111;
+    }
+    &:active {
+        background: #575757;
+    }
+    &:disabled {
+        background: rgba(255, 149, 20, 0.4);
+        cursor: unset;
+    }
+}

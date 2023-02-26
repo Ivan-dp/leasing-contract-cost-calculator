@@ -1,0 +1,15 @@
+@font-face {
+    font-family: "Gilroy-Regular";
+    src: url("/src/fonts/Gilroy-Regular/Gilroy-Regular.woff2") format("woff2"), url("/src/fonts/Gilroy-Regular/Gilroy-Regular.woff") format("woff"),
+        url("/src/fonts/Gilroy-Regular/Gilroy-Regular.ttf") format("truetype"), url("/src/fonts/Gilroy-Regular/Gilroy-Regular.eot") format("eot");
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Nekst-Black";
+    src: url("/src/fonts/Nekst-Black/Nekst-Black.woff2") format("woff2"), url("/src/fonts/Nekst-Black/Nekst-Black.woff") format("woff"),
+        url("/src/fonts/Nekst-Black/Nekst-Black.ttf") format("truetype"), url("/src/fonts/Nekst-Black/Nekst-Black.eot") format("eot");
+    font-style: normal;
+    font-weight: 900;
+}

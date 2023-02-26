@@ -2,11 +2,12 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const webpack = require("webpack");
+const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
 
 module.exports = {
     mode: "development",
     stats: {
-        children: false,
+        children: true,
     },
     devServer: {
         historyApiFallback: true,
@@ -16,7 +17,7 @@ module.exports = {
         port: 8080,
     },
     entry: {
-        index: "./src/pages/index/index.js",
+        index: ["./src/pages/index/index.js", "./src/pages/index/index.scss"],
     },
     output: {
         path: path.resolve(__dirname, "./dist"),
@@ -30,6 +31,7 @@ module.exports = {
         }),
         new webpack.HotModuleReplacementPlugin(),
         new CleanWebpackPlugin(),
+        new FaviconsWebpackPlugin("./src/img/home_fav.png"),
     ],
     module: {
         rules: [

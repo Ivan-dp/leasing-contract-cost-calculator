@@ -1,0 +1,11 @@
+extends ../../pug/head.pug 
+block head
+    link(rel="icon", href="/src/img/home_fav.png", type="image/png")
+    script(src="https://code.jquery.com/jquery-3.6.0.js")
+    script(src="https://code.jquery.com/ui/1.13.2/jquery-ui.js")
+block body 
+    block mixins
+        include ../../pug/mixins/button-mixin.pug
+    main.main 
+        h1.main__title Рассчитайте стоимость автомобиля в лизинг
+    include ../../blocks/button/button.pug

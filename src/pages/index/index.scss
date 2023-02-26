@@ -1,0 +1,36 @@
+// VARIABLES
+
+@import "/src/scss/variables.scss";
+
+// FONTS
+
+@import "/src/scss/fonts.scss";
+
+// MIXINS
+
+@import "/src/scss/mixins/Gilroy-Regular";
+@import "/src/scss/mixins/Nekst-Black";
+
+// BLOCKS
+
+@import "/src/blocks/button/button.scss";
+
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    height: 70vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__title {
+        width: 50%;
+        @include Nekst-Black(54px, 90%);
+    }
+}

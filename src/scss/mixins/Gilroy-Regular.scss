@@ -1,0 +1,7 @@
+@mixin Gilroy-Regular($size, $height) {
+    font-family: "Gilroy-Regular", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: $size + px;
+    line-height: $height + px;
+}

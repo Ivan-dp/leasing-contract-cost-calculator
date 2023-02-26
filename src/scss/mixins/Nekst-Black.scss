@@ -1,0 +1,7 @@
+@mixin Nekst-Black($size, $height) {
+    font-family: "Nekst-Black", sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: $size;
+    line-height: $height;
+}
