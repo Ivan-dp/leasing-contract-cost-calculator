@@ -7,9 +7,14 @@ block body
     block mixins
         include ../../pug/mixins/button-mixin.pug
         include ../../pug/mixins/slider-mixin.pug
+        include ../../pug/mixins/card-mixin.pug
     main.main 
         h1.main__title Рассчитайте стоимость автомобиля в лизинг
-        +slider-mixin("main__slider", "cost-of-car", "main__slider__value", "cost-of-car__value", "", "cost-of-car__description")
-        +slider-mixin("main__slider", "initial-payment", "main__slider__value", "initial-payment__value", "", "initial-payment__description")
-        +slider-mixin("main__slider", "lease-term", "main__slider__value", "lease-term__value", "", "lease-term__description")
+        .main__row
+            +card-mixin("main__card", "Стоимость автомобиля")
+                +slider-mixin("main__slider", "cost-of-car", "main__slider__value", "cost-of-car__value", "", "cost-of-car__description")
+            +card-mixin("main__card", "Первоначальный взнос")
+                +slider-mixin("main__slider", "initial-payment", "main__slider__value", "initial-payment__value", "", "initial-payment__description")
+            +card-mixin("main__card", "Срок лизинга")
+                +slider-mixin("main__slider", "lease-term", "main__slider__value", "lease-term__value", "", "lease-term__description")
         include ../../blocks/button/button.pug
