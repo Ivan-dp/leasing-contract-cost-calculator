@@ -339,3 +339,19 @@ leaseTerm.noUiSlider.on("update", function (values, handle) {
 
     leaseAmount.value = Number(initPayment.noUiSlider.get()) + Number(values[handle]) * Number(monthlyPayment.value);
 });
+
+// Действие кнопки "Оставить заявку"
+
+const reqButton = document.querySelector("#request-button");
+
+reqButton.addEventListener("click", function () {
+    const reqObject = {
+        "Cost of the car": costOfCarValue.value + " \u20bd",
+        "Initial payment": initPaymentValue.value,
+        "Lease term": leaseTermValue.value + " months",
+        "Lease amount": leaseAmount.value,
+        "Monthly payment": monthlyPayment.value,
+    };
+    reqButton.setAttribute("disabled", true);
+    alert(JSON.stringify(reqObject, null, 2));
+});
