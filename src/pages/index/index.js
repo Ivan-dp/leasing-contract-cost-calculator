@@ -292,3 +292,50 @@ leaseTermValue.addEventListener("change", function () {
 costOfCarDesc.value = `\u20bd`;
 initPaymentDesc.value = Math.floor((initPayment.noUiSlider.get() / costOfCar.noUiSlider.get()) * 100) + "%";
 leaseTermDesc.value = "мес.";
+
+// присвоение переменным вычислительных полей
+
+const leaseAmount = document.querySelector("#lease-amount");
+const monthlyPayment = document.querySelector("#monthly-payment");
+
+// Ежемесячный платёж
+
+monthlyPayment.value = Math.floor(
+    (Number(costOfCar.noUiSlider.get()) - Number(initPayment.noUiSlider.get())) *
+        ((0.05 * Math.pow(1 + 0.05, Number(leaseTerm.noUiSlider.get()))) / Math.pow(1 + 0.05, Number(leaseTerm.noUiSlider.get() - 1)))
+);
+
+// Сумма договора лизинга
+
+leaseAmount.value = Number(initPayment.noUiSlider.get()) + Number(leaseTerm.noUiSlider.get()) * Number(monthlyPayment.value);
+
+// Изменение Е.п. и С.д.л в зависимости от изменения слайдеров
+
+// Слайдер "Стоимость автомобиля"
+
+costOfCar.noUiSlider.on("update", function (values, handle) {
+    monthlyPayment.value = Math.floor(
+        (Number(values[handle]) - Number(initPayment.noUiSlider.get())) * ((0.05 * Math.pow(1 + 0.05, Number(leaseTerm.noUiSlider.get()))) / Math.pow(1 + 0.05, Number(leaseTerm.noUiSlider.get() - 1)))
+    );
+    leaseAmount.value = Number(initPayment.noUiSlider.get()) + Number(leaseTerm.noUiSlider.get()) * Number(monthlyPayment.value);
+});
+
+// Слайдер "Первоначальный взнос"
+
+initPayment.noUiSlider.on("update", function (values, handle) {
+    monthlyPayment.value = Math.floor(
+        (Number(costOfCar.noUiSlider.get()) - Number(values[handle])) * ((0.05 * Math.pow(1 + 0.05, Number(leaseTerm.noUiSlider.get()))) / Math.pow(1 + 0.05, Number(leaseTerm.noUiSlider.get() - 1)))
+    );
+
+    leaseAmount.value = Number(values[handle]) + Number(leaseTerm.noUiSlider.get()) * Number(monthlyPayment.value);
+});
+
+// Слайдер "Срок лизинга"
+
+leaseTerm.noUiSlider.on("update", function (values, handle) {
+    monthlyPayment.value = Math.floor(
+        (Number(costOfCar.noUiSlider.get()) - Number(initPayment.noUiSlider.get())) * ((0.05 * Math.pow(1 + 0.05, Number(values[handle]))) / Math.pow(1 + 0.05, Number(values[handle] - 1)))
+    );
+
+    leaseAmount.value = Number(initPayment.noUiSlider.get()) + Number(values[handle]) * Number(monthlyPayment.value);
+});
