@@ -2,6 +2,11 @@ import "../../blocks/button/button.js";
 
 console.log("IT WORKS!!!");
 
+function spacesNumbers(str) {
+    var m = str.match(/^(.*?)((?:[,.]\d+)?|)$/);
+    return m[1].replace(/\B(?=(?:\d{3})*$)/g, " ") + m[2];
+}
+
 // $(function () {
 //     function spacesNumbers(str) {
 //         var m = str.match(/^(.*?)((?:[,.]\d+)?|)$/);
@@ -257,7 +262,7 @@ noUiSlider.create(leaseTerm, {
 // установление значений при изменении положения ползунков слайдеров
 
 costOfCar.noUiSlider.on("update", function (values, handle) {
-    costOfCarValue.value = Math.floor(values[handle]);
+    costOfCarValue.value = spacesNumbers(Math.floor(values[handle]).toString());
     initPayment.noUiSlider.updateOptions({
         start: Math.floor(values[handle] * 0.13),
         range: {
@@ -265,14 +270,14 @@ costOfCar.noUiSlider.on("update", function (values, handle) {
             max: Math.floor(values[handle] * 0.6),
         },
     });
-    initPaymentValue.value = Math.floor(values[handle] * 0.13);
+    initPaymentValue.value = spacesNumbers(Math.floor(values[handle] * 0.13).toString()) + " \u20bd";
 });
 costOfCarValue.addEventListener("change", function () {
     costOfCar.noUiSlider.set([this.value]);
 });
 
 initPayment.noUiSlider.on("update", function (values, handle) {
-    initPaymentValue.value = Math.floor(values[handle]);
+    initPaymentValue.value = spacesNumbers(Math.floor(values[handle]).toString()) + " \u20bd";
     initPaymentDesc.value = Math.floor((initPayment.noUiSlider.get() / costOfCar.noUiSlider.get()) * 100) + "%";
 });
 initPaymentValue.addEventListener("change", function () {
@@ -300,44 +305,109 @@ const monthlyPayment = document.querySelector("#monthly-payment");
 
 // Ежемесячный платёж
 
-monthlyPayment.value = Math.floor(
+const monthlyPaymentValue = Math.floor(
     (Number(costOfCar.noUiSlider.get()) - Number(initPayment.noUiSlider.get())) *
-        ((0.05 * Math.pow(1 + 0.05, Number(leaseTerm.noUiSlider.get()))) / Math.pow(1 + 0.05, Number(leaseTerm.noUiSlider.get() - 1)))
+        ((0.05 * Math.pow(1 + 0.05, Number(leaseTerm.noUiSlider.get()))) / Math.pow(1 + 0.05, Number(leaseTerm.noUiSlider.get()) - 1))
 );
+
+monthlyPayment.value = spacesNumbers(monthlyPaymentValue.toString()) + " \u20bd";
+
+console.log(monthlyPaymentValue);
+console.log(monthlyPayment.value);
 
 // Сумма договора лизинга
 
-leaseAmount.value = Number(initPayment.noUiSlider.get()) + Number(leaseTerm.noUiSlider.get()) * Number(monthlyPayment.value);
+const leaseAmountValue =
+    Number(initPayment.noUiSlider.get()) +
+    Number(leaseTerm.noUiSlider.get()) *
+        Number(
+            Math.floor(
+                (Number(costOfCar.noUiSlider.get()) - Number(initPayment.noUiSlider.get())) *
+                    ((0.05 * Math.pow(1 + 0.05, Number(leaseTerm.noUiSlider.get()))) / Math.pow(1 + 0.05, Number(leaseTerm.noUiSlider.get()) - 1))
+            )
+        );
+
+leaseAmount.value = spacesNumbers(leaseAmountValue.toString()) + " \u20bd";
+
+console.log(leaseAmountValue);
+console.log(leaseAmount.value);
 
 // Изменение Е.п. и С.д.л в зависимости от изменения слайдеров
 
 // Слайдер "Стоимость автомобиля"
 
 costOfCar.noUiSlider.on("update", function (values, handle) {
-    monthlyPayment.value = Math.floor(
-        (Number(values[handle]) - Number(initPayment.noUiSlider.get())) * ((0.05 * Math.pow(1 + 0.05, Number(leaseTerm.noUiSlider.get()))) / Math.pow(1 + 0.05, Number(leaseTerm.noUiSlider.get() - 1)))
-    );
-    leaseAmount.value = Number(initPayment.noUiSlider.get()) + Number(leaseTerm.noUiSlider.get()) * Number(monthlyPayment.value);
+    monthlyPayment.value =
+        spacesNumbers(
+            Math.floor(
+                (Number(values[handle]) - Number(initPayment.noUiSlider.get())) *
+                    ((0.05 * Math.pow(1 + 0.05, Number(leaseTerm.noUiSlider.get()))) / Math.pow(1 + 0.05, Number(leaseTerm.noUiSlider.get()) - 1))
+            ).toString()
+        ) + " \u20bd";
+    leaseAmount.value =
+        spacesNumbers(
+            (
+                Number(initPayment.noUiSlider.get()) +
+                Number(leaseTerm.noUiSlider.get()) *
+                    Number(
+                        Math.floor(
+                            (Number(values[handle]) - Number(initPayment.noUiSlider.get())) *
+                                ((0.05 * Math.pow(1 + 0.05, Number(leaseTerm.noUiSlider.get()))) / Math.pow(1 + 0.05, Number(leaseTerm.noUiSlider.get()) - 1))
+                        )
+                    )
+            ).toString()
+        ) + " \u20bd";
 });
 
 // Слайдер "Первоначальный взнос"
 
 initPayment.noUiSlider.on("update", function (values, handle) {
-    monthlyPayment.value = Math.floor(
-        (Number(costOfCar.noUiSlider.get()) - Number(values[handle])) * ((0.05 * Math.pow(1 + 0.05, Number(leaseTerm.noUiSlider.get()))) / Math.pow(1 + 0.05, Number(leaseTerm.noUiSlider.get() - 1)))
-    );
+    monthlyPayment.value =
+        spacesNumbers(
+            Math.floor(
+                (Number(costOfCar.noUiSlider.get()) - Number(values[handle])) *
+                    ((0.05 * Math.pow(1 + 0.05, Number(leaseTerm.noUiSlider.get()))) / Math.pow(1 + 0.05, Number(leaseTerm.noUiSlider.get()) - 1))
+            ).toString()
+        ) + " \u20bd";
 
-    leaseAmount.value = Number(values[handle]) + Number(leaseTerm.noUiSlider.get()) * Number(monthlyPayment.value);
+    leaseAmount.value =
+        spacesNumbers(
+            (
+                Number(values[handle]) +
+                Number(leaseTerm.noUiSlider.get()) *
+                    Number(
+                        Math.floor(
+                            (Number(costOfCar.noUiSlider.get()) - Number(values[handle])) *
+                                ((0.05 * Math.pow(1 + 0.05, Number(leaseTerm.noUiSlider.get()))) / Math.pow(1 + 0.05, Number(leaseTerm.noUiSlider.get()) - 1))
+                        )
+                    )
+            ).toString()
+        ) + " \u20bd";
 });
 
 // Слайдер "Срок лизинга"
 
 leaseTerm.noUiSlider.on("update", function (values, handle) {
-    monthlyPayment.value = Math.floor(
-        (Number(costOfCar.noUiSlider.get()) - Number(initPayment.noUiSlider.get())) * ((0.05 * Math.pow(1 + 0.05, Number(values[handle]))) / Math.pow(1 + 0.05, Number(values[handle] - 1)))
-    );
+    monthlyPayment.value =
+        spacesNumbers(
+            Math.floor(
+                (Number(costOfCar.noUiSlider.get()) - Number(initPayment.noUiSlider.get())) * ((0.05 * Math.pow(1 + 0.05, Number(values[handle]))) / Math.pow(1 + 0.05, Number(values[handle]) - 1))
+            ).toString()
+        ) + " \u20bd";
 
-    leaseAmount.value = Number(initPayment.noUiSlider.get()) + Number(values[handle]) * Number(monthlyPayment.value);
+    leaseAmount.value =
+        spacesNumbers(
+            (
+                Number(initPayment.noUiSlider.get()) +
+                Number(values[handle]) *
+                    Number(
+                        Math.floor(
+                            (Number(costOfCar.noUiSlider.get()) - Number(initPayment.noUiSlider.get())) *
+                                ((0.05 * Math.pow(1 + 0.05, Number(values[handle]))) / Math.pow(1 + 0.05, Number(values[handle]) - 1))
+                        )
+                    )
+            ).toString()
+        ) + " \u20bd";
 });
 
 // Действие кнопки "Оставить заявку"
