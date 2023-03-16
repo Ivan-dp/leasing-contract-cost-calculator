@@ -72,6 +72,14 @@ body {
     }
 }
 
+.noUi-connects {
+    margin-left: -20px;
+}
+
+.noUi-target {
+    padding-left: 20px;
+}
+
 .custom-handle {
     width: 20px !important;
     height: 20px !important;
@@ -80,6 +88,12 @@ body {
     outline: none !important;
     background: #ff9514 !important;
     top: -9px !important;
+    cursor: pointer;
+    right: 0 !important;
+    &::before,
+    &::after {
+        content: none;
+    }
 }
 
 .custom-range {

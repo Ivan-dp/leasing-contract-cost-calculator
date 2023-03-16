@@ -1,0 +1,27 @@
+{
+    "tasks": [
+        {
+            "label": "CreateTerminalOnStartup",
+            "command": "${command:workbench.action.terminal.new}",
+            "type": "shell",
+            "problemMatcher": []
+        },
+        {
+            "label": "SplitTerminalOnStartupShell",
+            "type": "shell",
+            "dependsOn": ["CreateTerminalOnStartup"],
+            "command": "${command:workbench.action.terminal.split};${command:workbench.action.terminal.split}",
+            "problemMatcher": []
+        },
+        {
+            "label": "SplitTerminalOnStartupTriple",
+            "dependsOn": ["SplitTerminalOnStartupShell"],
+            "command": "${command:workbench.action.terminal.split}",
+            "type": "shell",
+            "problemMatcher": [],
+            "runOptions": {
+                "runOn": "folderOpen"
+            }
+        }
+    ]
+}
