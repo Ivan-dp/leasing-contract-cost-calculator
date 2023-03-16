@@ -1,6 +1,6 @@
 import "../../blocks/button/button.js";
 
-const resume = `Приветствую тебя, путник!\nЯ Иван Литовченко\nШарю во Frontend-разработке и вёрстке\nМой ТГ: https://t.me/Ivan_Litovchenko`;
+const resume = `Приветствую тебя, путник!\nЯ Иван Литовченко\nШарю во Frontend-разработке и вёрстке\nМой ТГ: https://t.me/Ivan_Litovchenko\nСсылка на резюме: https://bryansk.hh.ru/resume/f45e92f2ff0b067db30039ed1f733547645255`;
 console.log(resume);
 
 function spacesNumbers(str) {
