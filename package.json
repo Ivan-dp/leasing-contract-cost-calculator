@@ -1,5 +1,5 @@
 {
-    "name": "friendlee-digital-test",
+    "name": "leasing-contract-cost-calculator/",
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
@@ -10,14 +10,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Ivan-dp/friendlee-digital-test.git"
+        "url": "git+https://github.com/Ivan-dp/leasing-contract-cost-calculator.git"
     },
     "author": "ivan-dp@bk.ru",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/Ivan-dp/friendlee-digital-test/issues"
+        "url": "https://github.com/Ivan-dp/leasing-contract-cost-calculator/issues"
     },
-    "homepage": "https://github.com/Ivan-dp/friendlee-digital-test#readme",
+    "homepage": "https://github.com/Ivan-dp/leasing-contract-cost-calculator#readme",
     "devDependencies": {
         "@babel/cli": "^7.21.0",
         "@babel/core": "^7.21.0",
