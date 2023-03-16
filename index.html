@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-    <title>Тестовая вёрстка 4</title>
+    <title>Калькулятор стоимости договора лизинга</title>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-  <link rel="icon" href="dist/assets/favicon.png"><script defer src="dist/index.09c5e7cfbd9174adba85bundle.js"></script></head>
+  <link rel="icon" href="dist/assets/favicon.png"><script defer src="dist/index.b3e95562360f296c0655bundle.js"></script></head>
   <body>
     <main class="main"> 
       <div class="main__row">
@@ -19,7 +19,7 @@
               <h3>Стоимость автомобиля</h3>
                   <div class="slider__wrapper">
                     <div class="input__wrapper">
-                      <input class="ui-slider-value main__slider__value" type="text" readonly="true" id="cost-of-car__value">
+                      <input class="ui-slider-value main__slider__value" type="text" id="cost-of-car__value">
                       <input class="ui-slider-description" type="text" readonly="true" id="cost-of-car__description">
                     </div>
                     <div class="main__slider" id="cost-of-car"></div>
@@ -29,7 +29,7 @@
               <h3>Первоначальный взнос</h3>
                   <div class="slider__wrapper">
                     <div class="input__wrapper">
-                      <input class="ui-slider-value main__slider__value" type="text" readonly="true" id="initial-payment__value">
+                      <input class="ui-slider-value main__slider__value" type="text" id="initial-payment__value">
                       <input class="ui-slider-description" type="text" readonly="true" id="initial-payment__description">
                     </div>
                     <div class="main__slider" id="initial-payment"></div>
@@ -39,7 +39,7 @@
               <h3>Срок лизинга</h3>
                   <div class="slider__wrapper">
                     <div class="input__wrapper">
-                      <input class="ui-slider-value main__slider__value" type="text" readonly="true" id="lease-term__value">
+                      <input class="ui-slider-value main__slider__value" type="text" id="lease-term__value">
                       <input class="ui-slider-description" type="text" readonly="true" id="lease-term__description">
                     </div>
                     <div class="main__slider" id="lease-term"></div>
@@ -60,6 +60,7 @@
                   <button class="request-button" id="request-button">Оставить заявку</button>
             </div>
       </div>
+      <div id="new" style="width: 100%; height: 50px"></div>
     </main>
   </body>
 </html>
